@@ -1,0 +1,8 @@
+
+<Fades>
+	<Host>localhost</Host>
+	<Set>SpreadsEvents</Set>
+	<EventsKey>EventsFades</EventsKey>
+	<PortIn>9006</PortIn>
+	<PortOut>9000</PortOut>
+</Fades>

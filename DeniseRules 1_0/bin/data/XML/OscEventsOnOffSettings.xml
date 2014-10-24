@@ -1,0 +1,8 @@
+
+<OscOnOff>
+	<Host>localhost</Host>
+	<Set>SpreadsEvents</Set>
+	<EventsKey>EventsOnOff</EventsKey>
+	<PortIn>9005</PortIn>
+	<PortOut>9000</PortOut>
+</OscOnOff>

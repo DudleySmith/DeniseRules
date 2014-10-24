@@ -1,0 +1,20 @@
+<TubesPatterns>
+	<Tubes>
+		<RaysOn>0</RaysOn>
+		<TraitsOn>0</TraitsOn>
+		<RestartIntensity>255</RestartIntensity>
+		<TubesDelay>0.106327</TubesDelay>
+		<TubesPeriod>457.369</TubesPeriod>
+		<RaysDelay>0.00268924</RaysDelay>
+		<RaysPeriod>243.426</RaysPeriod>
+	<LineSize>3.16327</LineSize>
+	</Tubes>
+	<Patterns>
+		<PatternFamily>0</PatternFamily>
+		<NumPattern>0</NumPattern>
+		<SeqMinRate>0.582874</SeqMinRate>
+		<SeqMaxRate>0.931348</SeqMaxRate>
+		<ModeTypo>2</ModeTypo>
+	</Patterns>
+<TubesPatterns/>
+</TubesPatterns>

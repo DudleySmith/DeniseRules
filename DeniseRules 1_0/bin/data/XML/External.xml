@@ -1,0 +1,26 @@
+<group>
+	<MSAUseless>
+		<FluidCellsX>0</FluidCellsX>
+		<ResizeFluid>0</ResizeFluid>
+		<SolverIterations>0</SolverIterations>
+		<DoRGB>0</DoRGB>
+		<DoVorticityConfinement>0</DoVorticityConfinement>
+		<DrawFluid>0</DrawFluid>
+		<DrawParticles>0</DrawParticles>
+		<WrapX>0</WrapX>
+		<WrapY>0</WrapY>
+	</MSAUseless>
+<External>
+		<MSAUseless>
+			<FluidCellsX>178</FluidCellsX>
+			<ResizeFluid>0</ResizeFluid>
+			<SolverIterations>26</SolverIterations>
+			<DoRGB>1</DoRGB>
+			<DoVorticityConfinement>0</DoVorticityConfinement>
+			<DrawFluid>1</DrawFluid>
+			<DrawParticles>0</DrawParticles>
+			<WrapX>1</WrapX>
+			<WrapY>1</WrapY>
+		</MSAUseless>
+	</External>
+</group>

@@ -1,0 +1,38 @@
+<MyParts>
+	<PartsOn>1</PartsOn>
+	<World>
+		<RenderMode>0</RenderMode>
+		<AttractMode>0</AttractMode>
+		<ColorMode>1</ColorMode>
+		<VelMax>100</VelMax>
+		<FpsMax>20</FpsMax>
+		<FpsMin>0</FpsMin>
+		<ZMax>100</ZMax>
+	</World>
+	<Parts>
+		<Size>8.7551</Size>
+		<RateSize>0.75</RateSize>
+		<LifeBase>20</LifeBase>
+		<LifeReal>20</LifeReal>
+		<IsEternalLife>0</IsEternalLife>
+	</Parts>
+	<Attractions>
+		<CoefForces>0.456693</CoefForces>
+		<CoefForcesMin>0.0016</CoefForcesMin>
+		<CoefForces_X>1</CoefForces_X>
+		<CoefForces_Y>1</CoefForces_Y>
+		<Drag>0.821429</Drag>
+		<DistMin>204.082</DistMin>
+		<DistMax>1000</DistMax>
+		<MaxProxCounter>500</MaxProxCounter>
+	</Attractions>
+	<Emissions>
+		<Pulse>1</Pulse>
+		<PartsMaxPerEmission>15</PartsMaxPerEmission>
+		<FlowBase>200</FlowBase>
+		<FlowReal>200</FlowReal>
+	<PartsMax>1938</PartsMax>
+	<TrackersRate>0</TrackersRate>
+	</Emissions>
+<MyParts/>
+</MyParts>

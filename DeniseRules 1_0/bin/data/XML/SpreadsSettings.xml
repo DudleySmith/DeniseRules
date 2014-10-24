@@ -1,0 +1,15 @@
+<saveFPS>
+    <minFPStoSave>15</minFPStoSave>
+    <MaxFPS_Bugging>2</MaxFPS_Bugging>
+    <MaxDrawings>20</MaxDrawings>
+    <Latency_millis>5</Latency_millis>
+    <maxParticles>6</maxParticles>
+</saveFPS>
+<!--
+PROD ---------------------------------------------
+<saveFPS>
+	<minFPStoSave>20</minFPStoSave>
+	<MaxDrawings>5</MaxDrawings>
+	<Latency_millis>100</Latency_millis>
+</saveFPS>
+-->

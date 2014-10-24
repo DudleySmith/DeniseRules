@@ -1,0 +1,15 @@
+<Spiralo>
+	<Draw>0</Draw>
+	<Faces>4</Faces>
+	<Circles>8</Circles>
+	<Radius>102.5</Radius>
+	<Size>75</Size>
+	<SizeFactor>1</SizeFactor>
+	<SizeDecrease>4.71792</SizeDecrease>
+	<Rotate>163.947</Rotate>
+	<Fill>0</Fill>
+<Spiralo/>
+<DrawSpiralo>0</DrawSpiralo>
+	<X>0.5</X>
+	<Y>0.605</Y>
+</Spiralo>

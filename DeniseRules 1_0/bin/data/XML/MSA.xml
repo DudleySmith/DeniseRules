@@ -1,0 +1,23 @@
+<MSA>
+	<MSAUseful>
+		<DrawMode>0</DrawMode>
+		<Viscocity>0.00012</Viscocity>
+		<ColorDiffusion>0.000252</ColorDiffusion>
+		<FadeSpeed>0.0272</FadeSpeed>
+		<DeltaT>0.884</DeltaT>
+		<ColorMult>16.8</ColorMult>
+		<VelocityMult>1.6</VelocityMult>
+	</MSAUseful>
+	<MSAUseless>
+		<FluidCellsX>120</FluidCellsX>
+		<ResizeFluid>0</ResizeFluid>
+		<SolverIterations>45</SolverIterations>
+		<DoRGB>1</DoRGB>
+		<DoVorticityConfinement>0</DoVorticityConfinement>
+		<DrawFluid>1</DrawFluid>
+		<DrawParticles>0</DrawParticles>
+		<WrapX>1</WrapX>
+		<WrapY>1</WrapY>
+	</MSAUseless>
+<MSA/>
+</MSA>
