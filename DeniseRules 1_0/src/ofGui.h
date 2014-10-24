@@ -5,7 +5,7 @@
 // Ext addons
 //#include "ofxSimpleGuiToo.h"
 #include "ofxGui.h"
-#include "ofxFensterManager.h"
+//#include "ofxFensterManager.h"
 // My addons
 #include "ofRender.h"
 
@@ -29,10 +29,10 @@ class ofGui: public ofBaseApp{
     
 public:
     
-    void setup();
+    void setup(ofRender &_render);
     void draw();
     
-    void createDisplay();
+    //void createDisplay();
     void setupGUI();
     void setupOSC();
     
@@ -69,7 +69,7 @@ private:
     
 private:
     // New display system
-    ofRender m_oRender;
+    ofRender *m_oRender;
     
     // GUI -------------------------------------------------
     ofxPanel m_uiColors;
@@ -86,9 +86,6 @@ private:
     ofxPanel m_uiOthers;
     ofxIntSlider m_slSetLogLevel;
     ofxLabel     m_lbGetLogLevel;
-    
-    ofxPanel m_uiTest;
-    ofxLabel m_lbTest;
     
     // OSC
     ofParameterGroup     m_gpEasyOsc;

@@ -1,16 +1,19 @@
 #include "ofGui.h"
 
 // DECLARATION DES ELEMENTS D'INTERFACE ----------------------
-void ofGui::setup()
+void ofGui::setup(ofRender &_render)
 {
+    
+    m_oRender = &_render;
+    
     ofSetLogLevel(OF_LOG_VERBOSE);
     
-    createDisplay();
+    //createDisplay();
     
     // Display Settings --------------------------------
-    ofSetWindowTitle("Spreads : Interface");
+    //ofSetWindowTitle("Spreads : Interface");
     //ofSetWindowShape(m_oRender.m_slWidthDisplay, m_oRender.m_slHeightDisplay);
-    ofSetWindowShape(WindowWidth, WindowHeight);
+    //ofSetWindowShape(WindowWidth, WindowHeight);
     ofSetBackgroundAuto(true);
     ofSetFrameRate(60);
     
@@ -18,7 +21,7 @@ void ofGui::setup()
     // COLORS -------------------------
     // Load colors
     // TODO : ColorSet
-    m_oRender.m_oColorSet.setup("XML/ColorSets.xml");
+    m_oRender->m_oColorSet.setup("XML/ColorSets.xml");
     
     // GUI Interface -----------------------------------------
     ofLogNotice() << ("Setup GUI");
@@ -28,104 +31,33 @@ void ofGui::setup()
     ofLogNotice() << ("Setup OSC");
     setupOSC();
     
-    m_oRender.m_oColorSet.m_oUI.setCurrentSetIdx(1);
-    m_oRender.m_oColorSet.m_oUI.setChange(true);
+    m_oRender->m_oColorSet.m_oUI.setCurrentSetIdx(1);
+    m_oRender->m_oColorSet.m_oUI.setChange(true);
     
 }
 
 
-void ofGui::createDisplay(){
+//void ofGui::createDisplay(){
     //setup of fensterListener does not get called automatically yet
-    ofxFensterManager::get()->setupWindow(&m_oRender, WindowWidth, WindowHeight);
-}
+    //ofxFensterManager::get()->setupWindow(&m_oRender, WindowWidth, WindowHeight);
+//}
 
 void ofGui::setupGUI(){
-    /*
+    
     // PARTICLES SECTION ----------------------------------------------------------
-    m_oRender.m_oPartWorld.m_pgSets.setName("MyParts");
-    m_uiParts.setup(m_oRender.m_oPartWorld.m_pgSets, "XML/MyParts.xml");
+    m_oRender->m_oPartWorld.m_pgSets.setName("MyParts");
+    m_uiParts.setup(m_oRender->m_oPartWorld.m_pgSets, "XML/MyParts.xml");
     
     // COULEURS ---------------------------------------------------------------------
     m_uiColors.setName("Colors");
-    m_uiColors.setup(m_oRender.m_oColorSet.m_oUI.m_gGroup, "XML/Colors.xml");
+    m_uiColors.setup(m_oRender->m_oColorSet.m_oUI.m_gGroup, "XML/Colors.xml");
     m_uiColors.setPosition(10, 30);
     
     // UIs - Setting names and places
     m_uiTubesPatterns.setName("TubesPatterns");
-    m_uiTubesPatterns.setup(m_oRender.m_gpTubesPatterns, "XML/TubesPatterns.xml");
+    m_uiTubesPatterns.setup(m_oRender->m_gpTubesPatterns, "XML/TubesPatterns.xml");
     
-    m_uiArduino.setup(m_oRender.m_oArduinoServer.m_gpArduino, "XML/MyArduino.xml");
-    m_uiArduino.loadFromFile("XML/MyArduino.xml");
-    
-    // MSA - Blurred particles
-    m_uiMSA.setName("MSA");
-    m_uiMSA.setup(m_oRender.m_gpMSA, "XML/MSA.xml");
-    
-    // Display
-    m_uiDisplay.setName("Diplay");
-    m_uiDisplay.setup(m_oRender.m_gpDisplay, "XML/Display.xml");
-    
-    // Spiralo
-    m_uiSpiralo.setName("Spiralo");
-    m_uiSpiralo.setup(m_oRender.m_oSpiralo.m_pgSpiralo, "XML/Spiralo.xml");
-    
-    // Strips
-    m_uiStrips.setName("Strips");
-    m_uiStrips.setup(m_oRender.m_oStrips.m_pgGroup, "XML/Strips.xml");
-    
-    // OSC Parameters
-    m_oRender.m_oOscEventsOnOff.loadParameters("OscOnOff");
-    m_uiEasyOscOnOff.setup(m_oRender.m_oOscEventsOnOff.getSettings(), "XML/OscEventsOnOffSettings.xml");
-    
-    // OSC Parameters
-    m_oRender.m_oOscEventsFades.loadParameters("Fades");
-    m_uiEasyOscFades.setup(m_oRender.m_oOscEventsFades.getSettings(), "XML/OscEventsFadesSettings.xml");
-    
-    // Others UI features
-    m_uiOthers.setup();
-    m_uiOthers.setName("Others");
-    m_uiOthers.add(m_slSetLogLevel.setup("Set Log Level", 0, 0, 3));
-    m_uiOthers.add(m_lbGetLogLevel.setup("Log", "Log Level"));
-    
-    //m_uiColors.loadFromFile("Colors.xml");
-    m_uiParts.loadFromFile("XML/MyParts.xml");
-    m_uiTubesPatterns.loadFromFile("XML/TubesPatterns.xml");
-    m_uiMSA.loadFromFile("XML/MSA.xml");
-    m_uiEasyOscOnOff.loadFromFile("XML/OscEventsOnOffSettings.xml");
-    m_uiEasyOscFades.loadFromFile("XML/OscEventsFadesSettings.xml");
-    m_uiDisplay.loadFromFile("XML/Display.xml");
-    m_uiSpiralo.loadFromFile("XML/Spiralo.xml");
-    m_uiStrips.loadFromFile("XML/Strips.xml");
-    
-    
-    int idxUI = 0;
-    m_uiColors.setPosition(10 + (idxUI++)*250, 30);
-    m_uiParts.setPosition(10 + (idxUI++)*250, 30);
-    m_uiTubesPatterns.setPosition(10 + (idxUI++)*250, 30);
-    m_uiMSA.setPosition(10 + (idxUI++)*250, 30);
-    m_uiSpiralo.setPosition(10 + (idxUI)*250, 30);
-    m_uiStrips.setPosition(10 + (idxUI++)*250, 330);
-    
-    m_uiEasyOscOnOff.setPosition(10 + (idxUI++)*250, 30);
-    m_uiEasyOscFades.setPosition(10 + (idxUI-1)*250, 180);
-    m_uiDisplay.setPosition(10 + (idxUI-1)*250, 360);
-    m_uiOthers.setPosition(10 + (idxUI-1)*250, 560);
-    */
-    
-    // PARTICLES SECTION ----------------------------------------------------------
-    m_oRender.m_oPartWorld.m_pgSets.setName("MyParts");
-    m_uiParts.setup(m_oRender.m_oPartWorld.m_pgSets, "XML/MyParts.xml");
-    
-    // COULEURS ---------------------------------------------------------------------
-    m_uiColors.setName("Colors");
-    m_uiColors.setup(m_oRender.m_oColorSet.m_oUI.m_gGroup, "XML/Colors.xml");
-    m_uiColors.setPosition(10, 30);
-    
-    // UIs - Setting names and places
-    m_uiTubesPatterns.setName("TubesPatterns");
-    m_uiTubesPatterns.setup(m_oRender.m_gpTubesPatterns, "XML/TubesPatterns.xml");
-    
-    m_uiArduino.setup(m_oRender.m_oArduinoServer.m_gpArduino, "XML/MyArduino.xml");
+    m_uiArduino.setup(m_oRender->m_oArduinoServer.m_gpArduino, "XML/MyArduino.xml");
     m_uiArduino.loadFromFile("XML/MyArduino.xml");
     
     // MSA - Blurred particles
@@ -134,23 +66,23 @@ void ofGui::setupGUI(){
     
     // Display
     m_uiDisplay.setName("Diplay");
-    m_uiDisplay.setup(m_oRender.m_gpDisplay, "XML/Display.xml");
+    m_uiDisplay.setup(m_oRender->m_gpDisplay, "XML/Display.xml");
     
     // Spiralo
     m_uiSpiralo.setName("Spiralo");
-    m_uiSpiralo.setup(m_oRender.m_oSpiralo.m_pgSpiralo, "XML/Spiralo.xml");
+    m_uiSpiralo.setup(m_oRender->m_oSpiralo.m_pgSpiralo, "XML/Spiralo.xml");
     
     // Strips
     m_uiStrips.setName("Strips");
-    m_uiStrips.setup(m_oRender.m_oStrips.m_pgGroup, "XML/Strips.xml");
+    m_uiStrips.setup(m_oRender->m_oStrips.m_pgGroup, "XML/Strips.xml");
     
     // OSC Parameters
-    m_oRender.m_oOscEventsOnOff.loadParameters("OscOnOff");
-    m_uiEasyOscOnOff.setup(m_oRender.m_oOscEventsOnOff.getSettings(), "XML/OscEventsOnOffSettings.xml");
+    m_oRender->m_oOscEventsOnOff.loadParameters("OscOnOff");
+    m_uiEasyOscOnOff.setup(m_oRender->m_oOscEventsOnOff.getSettings(), "XML/OscEventsOnOffSettings.xml");
     
     // OSC Parameters
-    m_oRender.m_oOscEventsFades.loadParameters("Fades");
-    m_uiEasyOscFades.setup(m_oRender.m_oOscEventsFades.getSettings(), "XML/OscEventsFadesSettings.xml");
+    m_oRender->m_oOscEventsFades.loadParameters("Fades");
+    m_uiEasyOscFades.setup(m_oRender->m_oOscEventsFades.getSettings(), "XML/OscEventsFadesSettings.xml");
     
     // Others UI features
     m_uiOthers.setup();
@@ -181,18 +113,13 @@ void ofGui::setupGUI(){
     m_uiEasyOscFades.setPosition(10 + (idxUI-1)*250, 180);
     m_uiDisplay.setPosition(10 + (idxUI-1)*250, 360);
     m_uiOthers.setPosition(10 + (idxUI-1)*250, 560);
-    
-    m_uiTest.setName("Test");
-    m_lbTest.setup("TestName", "TestLabel");
-    m_uiTest.add(&m_lbTest);
-    m_uiTest.setPosition(ofGetWidth()*0.5, ofGetHeight()*0.5);
-    
+
 }
 
 void ofGui::setupOSC(){
     
-    m_oRender.m_oOscEventsOnOff.setup(EASYOSC_IN);
-    m_oRender.m_oOscEventsFades.setup(EASYOSC_IN);
+    m_oRender->m_oOscEventsOnOff.setup(EASYOSC_IN);
+    m_oRender->m_oOscEventsFades.setup(EASYOSC_IN);
     
     m_oLiveGrabberColors.setup((ofParameterGroup&)m_uiColors.getParameter(),9001,"localhost",9000);
     m_oLiveGrabberParts.setup((ofParameterGroup&)m_uiParts.getParameter(),9002,"localhost",9000);
@@ -212,8 +139,8 @@ void ofGui::updateOSC(){
     m_oLiveGrabberSpiralo.update();
     m_oLiveGrabberStrips.update();
 
-    m_oRender.m_oOscEventsOnOff.update();
-    m_oRender.m_oOscEventsFades.update();
+    m_oRender->m_oOscEventsOnOff.update();
+    m_oRender->m_oOscEventsFades.update();
     
 }
 
@@ -231,8 +158,6 @@ void ofGui::draw(){
     m_uiDisplay.draw();
     m_uiSpiralo.draw();
     m_uiStrips.draw();
-    
-    m_uiTest.draw();
     
     // Affichage des messages de fonctionnement
     ofPushStyle();
@@ -267,7 +192,8 @@ void ofGui::update(){
     // OSC, now !!!!!!!!!!!!!!!!!!!!!
     updateOSC();
     
-    m_strTrace = m_oRender.m_strTrace;
+    m_strTrace = "";
+    m_strTrace += m_oRender->m_strTrace;
     
     switch (m_slSetLogLevel) {
         case 0:
@@ -297,11 +223,11 @@ void ofGui::update(){
 }
 
 void ofGui::keyPressed(int key){
-    m_oRender.keyPressed(key);
+    m_oRender->keyPressed(key);
 }
 
 void ofGui::keyReleased(int key){
-    m_oRender.keyReleased(key);
+    m_oRender->keyReleased(key);
 }
 
 void ofGui::windowResized(int w, int h){

@@ -38,9 +38,12 @@
 
 #define     SPTYPO_SPREADS  "Spreads"
 
-class ofRender : public ofxFenster{
+class ofRender : public ofBaseApp{
 
 	public:
+        ofRender();
+        ~ofRender(){}
+    
 		void setup();
 		void setupParameters();
 		void update();

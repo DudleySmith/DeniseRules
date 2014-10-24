@@ -11,7 +11,6 @@ Made with OF Community, OF Compatiblity 0.8.4
   * ofdTimer
   * ofxColorSet https://github.com/DudleySmith/ofxColorSet
   * ofxEasyOsc
-  * ofxFenster
   * ofxFullOfStrips
   * ofxLiveGrabber
   * ofxParticleWorld
@@ -26,4 +25,5 @@ Made with OF Community, OF Compatiblity 0.8.4
   * ofxSyphon
   * ofxVectorGraphics
   * ofxXmlSettings
+  * ofxMultiGLFWWindow
 

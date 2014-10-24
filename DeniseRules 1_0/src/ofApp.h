@@ -1,97 +1,33 @@
 #pragma once
 
-#define NikkingsFolder  "Nikkings/"
-
-// Ext addons
-//#include "ofxSimpleGuiToo.h"
-#include "ofxGui.h"
-#include "ofxFensterManager.h"
-// My addons
+#include "ofMain.h"
+#include "ofxMultiGLFWWindow.h"
+#include "ofGui.h"
 #include "ofRender.h"
 
-#include "ofxColorSet.h"
-#include "ofxLiveGrabber.h"
+class ofApp : public ofBaseApp{
 
-//#include "msaFluidParticlesApp.h"
-//#include "ofdFx.h" // Removed fx because of syphon + Resolume
-//#include "ofdTools.h"
+	public:
+		void setup();
+		void update();
+		void draw();
 
-#define WindowWidth     1024
-#define WindowHeight    768
-
-
-typedef struct {
-    string  name;
-    bool    action;
-}nikking;
-
-class ofApp: public ofBaseApp{
+		void keyPressed(int key);
+		void keyReleased(int key);
+		void mouseMoved(int x, int y );
+		void mouseDragged(int x, int y, int button);
+		void mousePressed(int x, int y, int button);
+		void mouseReleased(int x, int y, int button);
+		void windowResized(int w, int h);
+		void dragEvent(ofDragInfo dragInfo);
+		void gotMessage(ofMessage msg);
     
-public:
+        ofxMultiGLFWWindow *glfw;
+        int wIndex;
+        int updateIndex;
+        vector<GLFWwindow*> *windows;
     
-    void setup();
-    void draw();
-    
-    void createDisplay();
-    void setupGUI();
-    void setupOSC();
-    
-    void update();
-    
-    void keyPressed(int key);
-    void keyReleased(int key);
-    void windowResized(int _width, int _height);
-    
-protected:
-private:
-    ofxParticle partToSetup;
-    
-public:
-    //ofdSpreadGuiToApp mOut_vars;
-    string m_strTrace;
-    
-private:
-    vector<nikking>  m_nikkings;
-    
-    nikking     m_currentNikking;
-    void    loadPresetsFromFolder(string _folder);
-    
-private:
-    // OSC ----------------------------------------------
-    ofxOscLiveGrabberParameterSync m_oLiveGrabberColors;
-    ofxOscLiveGrabberParameterSync m_oLiveGrabberParts;
-    ofxOscLiveGrabberParameterSync m_oLiveGrabberTubesPatterns;
-    //ofxOscLiveGrabberParameterSync m_oLiveGrabberMSA;
-    ofxOscLiveGrabberParameterSync m_oLiveGrabberStrips;
-    ofxOscLiveGrabberParameterSync m_oLiveGrabberSpiralo;
-    
-    void updateOSC();
-    
-private:
-    // New display system
-    ofRender m_oRender;
-    
-    // GUI -------------------------------------------------
-    ofxPanel m_uiColors;
-    ofxPanel m_uiParts;
-    ofxPanel m_uiTubesPatterns;
-    ofxPanel m_uiArduino;
-    //ofxPanel m_uiMSA;
-    ofxPanel m_uiEasyOscOnOff;
-    ofxPanel m_uiEasyOscFades;
-    ofxPanel m_uiDisplay;
-    ofxPanel m_uiSpiralo;
-    ofxPanel m_uiStrips;
-    
-    ofxPanel m_uiOthers;
-    ofxIntSlider m_slSetLogLevel;
-    ofxLabel     m_lbGetLogLevel;
-    
-    ofxPanel m_uiTest;
-    ofxLabel m_lbTest;
-    
-    // OSC
-    ofParameterGroup     m_gpEasyOsc;
-    
+    ofGui gui;
+    ofRender render;
     
 };

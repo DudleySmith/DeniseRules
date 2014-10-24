@@ -1,6 +1,10 @@
 
 #include "ofRender.h"
 
+ofRender::ofRender(){
+    
+}
+
 //--------------------------------------------------------------
 void ofRender::setup(){
     
@@ -14,12 +18,12 @@ void ofRender::setup(){
     
     ofSetBackgroundAuto(true);
     
-    setWindowShape(m_slWidthDisplay, m_slHeightDisplay);
+    ofSetWindowShape(m_slWidthDisplay, m_slHeightDisplay);
     
     // PARTICLES WORLD Setup
     m_oPartWorld.setup(m_oColorSet);
     // Ajout des forces --------------------------------------------------------
-    m_aAttractors.push_back(ofxAttractor(m_oPartWorld, ofPoint(0.5*getWidth(), 0.6*getHeight())));
+    m_aAttractors.push_back(ofxAttractor(m_oPartWorld, ofPoint(0.5*ofGetWidth(), 0.6*ofGetHeight())));
     
     // SPREADS Motifs --------------------------------------------------------------
     m_oSpreads.setup("XML/SpreadsSettings.xml");
@@ -117,7 +121,7 @@ void ofRender::update(){
     WindowTitle += " - ";
     WindowTitle += ofToString(ofGetFrameRate());
     
-    setWindowTitle(WindowTitle);
+    ofSetWindowTitle(WindowTitle);
     
     // 1ere Affect des tailles de fenetre
     // CALCUL DE LA TAILLE DE FENETRE ET EVENEMENT -----------------------------------
@@ -127,7 +131,7 @@ void ofRender::update(){
     }
      */
     // Fullscreen ? --
-    setFullscreen(m_btFullScreen);
+    ofSetFullscreen(m_btFullScreen);
     
     // RECUPERATION DEPUIS La GUI ET INJECTION DANS LE SYSTEME
     ofLogVerbose() << ("Trace Error : __GUI__");
@@ -332,7 +336,7 @@ void ofRender::draw(){
     m_oStrips.draw();   // STRIPS ------------------------
     
     // OUT TO SYPHON : Syphon server -------------------
-    m_oTexSyphon.loadScreenData(0, 0, getWidth(), getHeight());
+    m_oTexSyphon.loadScreenData(0, 0, ofGetWidth(), ofGetHeight());
     m_oTexSyphon.draw(0,0);
     
     m_oSyphonServer.publishScreen();
@@ -388,9 +392,9 @@ void ofRender::keyReleased(int key){
 //--------------------------------------------------------------
 void ofRender::windowResized(int w, int h){
     
-    setWindowShape(w, h);
+    ofSetWindowShape(w, h);
     
-    m_oTexSyphon.allocate(getWidth(), getHeight(), GL_RGB);
+    m_oTexSyphon.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
     
 }
 
