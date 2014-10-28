@@ -29,5 +29,5 @@ class ofApp : public ofBaseApp{
     
     ofGui gui;
     ofRender render;
-    
+
 };

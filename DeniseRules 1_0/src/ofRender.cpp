@@ -336,8 +336,8 @@ void ofRender::draw(){
     m_oStrips.draw();   // STRIPS ------------------------
     
     // OUT TO SYPHON : Syphon server -------------------
-    m_oTexSyphon.loadScreenData(0, 0, ofGetWidth(), ofGetHeight());
-    m_oTexSyphon.draw(0,0);
+    //m_oTexSyphon.loadScreenData(0, 0, ofGetWidth(), ofGetHeight());
+    //m_oTexSyphon.draw(0,0);
     
     m_oSyphonServer.publishScreen();
 

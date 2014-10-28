@@ -51,6 +51,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
     // draw is called once on each window every frame
     
     // the window index will increment
@@ -68,21 +69,32 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
+    cout << "key pressed" << endl;
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key){
+    
     // get event window to identify window source
-    if (glfw->getEventWindow() == windows->at(0))
-        cout << "window 1: key pressed" << endl;
+    if (glfw->getEventWindow() == windows->at(0)){
+        cout << "window 1: key released" << endl;
+    }
     else if (glfw->getEventWindow() == windows->at(1))
-        cout << "window 2: key pressed" << endl;
+    {
+        cout << "window 2: key released" << endl;
+    }
     
     // hide current window
-    if (key == 'h')
+    if (key == 'h'){
         glfw->hideWindow(glfw->getEventWindow());
-    
+    }
     // show current window
-    else if (key == '1')
+    else if (key == '1'){
         glfw->showWindow(windows->at(0));
-    else if (key == '2')
+    }
+    else if (key == '2'){
         glfw->showWindow(windows->at(1));
+    }
     else if (key == 'n') {
         glfw->setWindow(glfw->getEventWindow());
         ofHideCursor();
@@ -91,11 +103,16 @@ void ofApp::keyPressed(int key) {
         glfw->setWindow(glfw->getEventWindow());
         ofShowCursor();
     }
-}
+    else if (key == 'f') {
+        glfw->setWindow(glfw->getEventWindow());
+        ofSetFullscreen(false);
+    }
+    else if (key == 'F') {
+        glfw->setWindow(glfw->getEventWindow());
+        ofSetFullscreen(true);
+    }
+    
 
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-    cout << "key released" << endl;
 }
 
 //--------------------------------------------------------------
