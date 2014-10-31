@@ -1,9 +1,8 @@
 
 #include "ofRender.h"
 
-ofRender::ofRender(){
-    
-}
+//ofRender::ofRender(){
+//}
 
 //--------------------------------------------------------------
 void ofRender::setup(){
@@ -23,7 +22,15 @@ void ofRender::setup(){
     // PARTICLES WORLD Setup
     m_oPartWorld.setup(m_oColorSet);
     // Ajout des forces --------------------------------------------------------
-    m_aAttractors.push_back(ofxAttractor(m_oPartWorld, ofPoint(0.5*ofGetWidth(), 0.6*ofGetHeight())));
+    //m_aAttractors.push_back(ofxAttractor(m_oPartWorld, ofPoint(0.5*ofGetWidth(), 0.6*ofGetHeight())));
+    // Top Horizontal
+    m_aAttractors["top"] = ofxAttractor(m_oPartWorld, ofPoint(0,0), ofPoint(ofGetWidth(), 0));
+    // Bottom Horizontal
+    m_aAttractors["bottom"] = ofxAttractor(m_oPartWorld, ofPoint(0,ofGetHeight()), ofPoint(ofGetWidth(), ofGetHeight()));
+    // Right Horizontal
+    m_aAttractors["right"] = ofxAttractor(m_oPartWorld, ofPoint(ofGetWidth(),0), ofPoint(ofGetWidth(), ofGetHeight()));
+    // Left Horizontal
+    m_aAttractors["left"] = ofxAttractor(m_oPartWorld, ofPoint(0,0), ofPoint(0, ofGetHeight()));
     
     // SPREADS Motifs --------------------------------------------------------------
     m_oSpreads.setup("XML/SpreadsSettings.xml");
@@ -110,6 +117,14 @@ void ofRender::setupParameters(){
     m_gpDisplay.add(m_slWidthDisplay.set("WidthDisplay", 1024, 720, 2000));
     m_gpDisplay.add(m_slHeightDisplay.set("HeightDisplay", 768, 480, 2000));
     m_gpDisplay.add(m_btFullScreen.set("Fullscreen", false));
+    
+    // Attractors
+    m_gpPartsAttract.setName("Attractors");
+    m_gpPartsAttract.add(m_btCentral.set("Central", false));
+    m_gpPartsAttract.add(m_btTop.set("Top", false));
+    m_gpPartsAttract.add(m_btBottom.set("Bottom", false));
+    m_gpPartsAttract.add(m_btLeft.set("Left", false));
+    m_gpPartsAttract.add(m_btRight.set("Right", false));
     
 }
 
@@ -248,6 +263,11 @@ void ofRender::update(){
     m_oColorSet.update();
     
     // PARTICULES -------------------
+    m_aAttractors["top"].setActive(m_btTop);
+    m_aAttractors["bottom"].setActive(m_btBottom);
+    m_aAttractors["left"].setActive(m_btLeft);
+    m_aAttractors["right"].setActive(m_btRight);
+    
     m_oPartWorld.setAttractors(&m_aAttractors);
     m_oPartWorld.update();
     

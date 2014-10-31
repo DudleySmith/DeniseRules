@@ -64,6 +64,7 @@ private:
     //ofxOscLiveGrabberParameterSync m_oLiveGrabberMSA;
     ofxOscLiveGrabberParameterSync m_oLiveGrabberStrips;
     ofxOscLiveGrabberParameterSync m_oLiveGrabberSpiralo;
+    ofxOscLiveGrabberParameterSync m_oLiveGrabberAttractors;
     
     void updateOSC();
     
@@ -82,6 +83,7 @@ private:
     ofxPanel m_uiDisplay;
     ofxPanel m_uiSpiralo;
     ofxPanel m_uiStrips;
+    ofxPanel m_uiAttractors;
     
     ofxPanel m_uiOthers;
     ofxIntSlider m_slSetLogLevel;

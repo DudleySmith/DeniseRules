@@ -68,6 +68,11 @@ void ofGui::setupGUI(){
     m_uiDisplay.setName("Diplay");
     m_uiDisplay.setup(m_oRender->m_gpDisplay, "XML/Display.xml");
     
+    
+    // Display
+    m_uiAttractors.setName("Attractors");
+    m_uiAttractors.setup(m_oRender->m_gpPartsAttract, "XML/Attractors.xml");
+    
     // Spiralo
     m_uiSpiralo.setName("Spiralo");
     m_uiSpiralo.setup(m_oRender->m_oSpiralo.m_pgSpiralo, "XML/Spiralo.xml");
@@ -97,6 +102,7 @@ void ofGui::setupGUI(){
     m_uiEasyOscOnOff.loadFromFile("XML/OscEventsOnOffSettings.xml");
     m_uiEasyOscFades.loadFromFile("XML/OscEventsFadesSettings.xml");
     m_uiDisplay.loadFromFile("XML/Display.xml");
+    m_uiAttractors.loadFromFile("XML/Attractors.xml");
     m_uiSpiralo.loadFromFile("XML/Spiralo.xml");
     m_uiStrips.loadFromFile("XML/Strips.xml");
     
@@ -127,6 +133,7 @@ void ofGui::setupOSC(){
     //m_oLiveGrabberMSA.setup((ofParameterGroup&)m_uiMSA.getParameter(),9004,"localhost",9000);
     m_oLiveGrabberSpiralo.setup((ofParameterGroup&)m_uiSpiralo.getParameter(),9007,"localhost",9000);
     m_oLiveGrabberStrips.setup((ofParameterGroup&)m_uiStrips.getParameter(),9008,"localhost",9000);
+    m_oLiveGrabberAttractors.setup((ofParameterGroup&)m_uiAttractors.getParameter(),9009,"localhost",9000);
 
 }
 
@@ -138,7 +145,8 @@ void ofGui::updateOSC(){
     m_oLiveGrabberParts.update();
     m_oLiveGrabberSpiralo.update();
     m_oLiveGrabberStrips.update();
-
+    m_oLiveGrabberAttractors.update();
+    
     m_oRender->m_oOscEventsOnOff.update();
     m_oRender->m_oOscEventsFades.update();
     
@@ -158,6 +166,7 @@ void ofGui::draw(){
     m_uiDisplay.draw();
     m_uiSpiralo.draw();
     m_uiStrips.draw();
+    m_uiAttractors.draw();
     
     // Affichage des messages de fonctionnement
     ofPushStyle();

@@ -41,8 +41,8 @@
 class ofRender : public ofBaseApp{
 
 	public:
-        ofRender();
-        ~ofRender(){}
+//        ofRender();
+//        ~ofRender(){}
     
 		void setup();
 		void setupParameters();
@@ -56,8 +56,8 @@ class ofRender : public ofBaseApp{
 
     // PARTICULES
 public:
-    ofxParticleWorld m_oPartWorld;
-    vector<ofxAttractor>        m_aAttractors;
+    ofxParticleWorld            m_oPartWorld;
+    map<string, ofxAttractor>   m_aAttractors;
     
 private:
     // SPREADS
@@ -122,6 +122,14 @@ public:
     ofParameter<int>    m_slWidthDisplay;
     ofParameter<int>    m_slHeightDisplay;
     ofParameter<bool>   m_btFullScreen;
+    
+    // Display ---------------
+    ofParameterGroup    m_gpPartsAttract;
+    ofParameter<bool>   m_btCentral;
+    ofParameter<bool>   m_btTop;
+    ofParameter<bool>   m_btBottom;
+    ofParameter<bool>   m_btLeft;
+    ofParameter<bool>   m_btRight;
     
     // OSC Event
     ofxEasyOsc  m_oOscEventsOnOff;
